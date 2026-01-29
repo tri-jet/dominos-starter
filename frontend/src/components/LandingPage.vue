@@ -18,10 +18,7 @@ const count = ref(0)
   </div>
 
   <p>
-    Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
-      >create-vue</a
-    >, the official Vue + Vite starter
+    Welcome to the Domino's Inventory Management tool, here you will be able to login with your staff details and view the information for your outlet.
   </p>
   <p>
     Learn more about IDE Support for Vue in the
