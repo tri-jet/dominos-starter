@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import LandingPage from './components/LandingPage.vue';
+//mport LandingPage from './components/LandingPage.vue';
+import LoginPage from './components/LoginPage.vue';
 </script>
 
 <template>
@@ -11,7 +12,8 @@ import LandingPage from './components/LandingPage.vue';
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <LandingPage msg="Vite + Vue" />
+  <!--<LandingPage msg="Vite + Vue" />-->
+  <LoginPage/>
 </template>
 
 <style scoped>
