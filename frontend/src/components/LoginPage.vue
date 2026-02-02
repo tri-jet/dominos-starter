@@ -38,12 +38,20 @@
       <p v-if="message" :class="['mt-4 text-center text-sm', isError ? 'text-red-600' : 'text-green-600']">
         {{ message }}
       </p>
+      <button 
+      @click="emit('go-back')"
+      class="absolute top-4 left-4 text-gray-500 hover:text-[#006491] flex items-center gap-1 font-medium"
+    >
+      ← Return to Home
+    </button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
+
+const emit = defineEmits(['go-back'])
 
 // Define an interface for your form data
 interface LoginForm {

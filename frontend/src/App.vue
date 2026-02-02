@@ -1,32 +1,47 @@
 <script setup lang="ts">
-//mport LandingPage from './components/LandingPage.vue';
-import LoginPage from './components/LoginPage.vue';
+import { ref } from 'vue'
+import LandingPage from './components/LandingPage.vue'
+import LoginPage from './components/LoginPage.vue'
+
+// Logic to switch between 'landing' and 'login'
+const view = ref<'landing' | 'login'>('landing')
+
+const goToLogin = () => {
+  view.value = 'login'
+}
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <!--<LandingPage msg="Vite + Vue" />-->
-  <LoginPage/>
+  <main class="min-h-screen bg-gray-50 font-sans">
+    <nav class="p-6 flex justify-center">
+      <div class="flex gap-2">
+        <div class="w-8 h-8 bg-[#E31837] rotate-45 flex items-center justify-center">
+          <div class="w-2 h-2 bg-white rounded-full"></div>
+        </div>
+        <div class="w-8 h-8 bg-[#006491] rotate-45 flex items-center justify-center gap-1">
+          <div class="w-2 h-2 bg-white rounded-full"></div>
+          <div class="w-2 h-2 bg-white rounded-full"></div>
+        </div>
+      </div>
+    </nav>
+
+    <Transition name="fade" mode="out-in">
+      <div v-if="view === 'landing'">
+        <LandingPage @start-login="goToLogin" />
+      </div>
+      <div v-else>
+        <LoginPage @go-back="view = 'landing'" />
+      </div>
+    </Transition>
+  </main>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<style>
+/* Smooth transition between pages */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
 }
 </style>

@@ -1,38 +1,28 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
-defineProps<{ msg: string }>()
-
-const count = ref(0)
+// Define the event we will send to the parent
+const emit = defineEmits(['start-login'])
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
+  <div class="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
+    <h1 class="text-5xl font-black text-[#006491] mb-6 uppercase tracking-tighter">
+      Domino's
+    </h1>
 
-  <div class="card">
-    <button type="button" @click="count++">count is {{ count }}</button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test HMR
+    <p class="max-w-md text-gray-600 text-lg mb-8 leading-relaxed">
+      Domino's Stock Management software to aid in managing 
+      Domino's delivery outlets' stock.
     </p>
+    <p class="max-w-md text-gray-600 text-lg mb-8 leading-relaxed">
+      Here you will be able to login with your staff details and view 
+      the information for your outlet.
+    </p>
+
+    <button 
+      @click="emit('start-login')"
+      class="bg-[#E31837] text-white font-bold py-3 px-8 rounded-full hover:bg-[#c4152f] transition-all transform hover:scale-105 shadow-lg"
+    >
+      Staff Login
+    </button>
   </div>
-
-  <p>
-    Welcome to the Domino's Inventory Management tool, here you will be able to login with your staff details and view the information for your outlet.
-  </p>
-  <p>
-    Learn more about IDE Support for Vue in the
-    <a
-      href="https://vuejs.org/guide/scaling-up/tooling.html#ide-support"
-      target="_blank"
-      >Vue Docs Scaling up Guide</a
-    >.
-  </p>
-  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
 </template>
-
-<style scoped>
-.read-the-docs {
-  color: #888;
-}
-</style>
