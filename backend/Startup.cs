@@ -28,6 +28,12 @@ namespace backend
         {
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddControllers();
+            services.AddCors(options =>
+            {
+               options.AddPolicy("AllowVite",
+               builder => builder.WithOrigins("http://localhost:5173").AllowAnyMethod().AllowAnyHeader()
+               ); 
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +54,8 @@ namespace backend
             // This is where Auth will eventually go (between Routing and Endpoints)
             // app.UseAuthentication();
             // app.UseAuthorization();
+            
+            app.UseCors("AllowVite");
 
             app.UseEndpoints(endpoints =>
             {
