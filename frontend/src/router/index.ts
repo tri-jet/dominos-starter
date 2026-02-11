@@ -1,9 +1,10 @@
-import { createRouter, createWebHistory} from 'vue-router';
+import { createRouter, createWebHistory} from 'vue-router'
 
-import LoginPage from '../components/LoginPage.vue';
-import ForgotPassword from '../components/ForgotPassword.vue';
-import LandingPage from '../components/LandingPage.vue';
-import RegisterPage from '../components/RegisterPage.vue';
+import LoginPage from '../components/LoginPage.vue'
+import ForgotPassword from '../components/ForgotPassword.vue'
+import LandingPage from '../components/LandingPage.vue'
+import RegisterPage from '../components/RegisterPage.vue'
+import Dashboard from '../components/Dashboard.vue'
 
 const routes = [
     { path: '/', redirect: '/login' },
@@ -12,6 +13,7 @@ const routes = [
   { path: '/register', component: RegisterPage },
   { path: '/forgot-password', component: ForgotPassword },
   { path: '/landing', component: LandingPage},
+  { path: '/dashboard', component: Dashboard},
 ]
 
 const router = createRouter({
@@ -19,7 +21,7 @@ const router = createRouter({
     routes
 });
 
-//Go back to landing page if need token
+//Go back to landing page if don't have auth token
 router.beforeEach((to) => {
     if(to.meta.requiresAuth){
         const token = localStorage.getItem('token')
